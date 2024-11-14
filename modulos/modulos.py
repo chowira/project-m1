@@ -137,7 +137,7 @@ def calculo_de_distacias(df_1,df_2):
     df_1["key"] = 1
     df_2["key"] = 1
     df_combinado = pd.merge(df_1,df_2)
-    df_combinado["distancia"] = df_combinado[0:100].apply(lambda x: distance_meters(x["latitude"], x["longitude"],x["latitud_bicimad"], x["longitud_bicimad"] ), axis=1)
+    df_combinado["distancia"] = df_combinado[0:1000].apply(lambda x: distance_meters(x["latitude"], x["longitude"],x["latitud_bicimad"], x["longitud_bicimad"] ), axis=1)
     return df_combinado      
 
 
@@ -189,13 +189,28 @@ def guardar_csv(dataframe, nombre_archivo):
 # Argument parser function
 
 def argument_parser():
-    parser = argparse.ArgumentParser(description= 'Application for arithmetic calculations' )
-    help_message ='You have two options. Option 1: "mult" performs multiplication of two given numbers. Option 2: "sum" performs the sum of two given numbers' 
+    parser = argparse.ArgumentParser(description = 'Application for arithmetic calculations' )
+    help_message = "You have two options. Option 1: ALL te devuelve un csv con todos los lugares de interes . Option 2: LUGAR DE INTERES       te da el sitio especifico"  
     parser.add_argument('-f', '--function', help=help_message, type=str)
     args = parser.parse_args()
     return args
 
 
+
+#FUNCION: filtra y devuelve la fila dependiendo del string que le pases 
+#Acepta:Un DataFrame como argumento y un string como segundo argumento 
+#Devuelve :Si no esta devuelve un error y si esta te devuelve la fila con la info 
+
+def obtener_fila_por_lugar(df, lugar_de_interes):
+    """Funcion que filtra a partir de un string y verifica si el string esta en el 
+    DataFrame. y te devuelve una unica fila con su contenido"""
+    
+    fila = df.loc[df['lugar de interes'] == lugar_de_interes]
+    
+    if fila.empty:
+        return f"No se encontró el lugar de interés: {lugar_de_interes}"
+    
+    return fila
 
 
 
