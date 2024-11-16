@@ -1,44 +1,83 @@
-# Proyecto del Módulo 1 - Ironhack Part Time
 
-## Descripción
-Este proyecto tiene como objetivo limpiar y operar datos provenientes de diferentes formatos para calcular la distancia mínima entre un punto de interés y la estación de Bici Max más cercana en Madrid.
+# Module 1 Project - Ironhack Part Time 🚀🚀
 
-## Problemática
-A partir de unos datos contenidos en diferentes formatos, se busca obtener un conjunto de datos que devuelva la distancia mínima entre un punto de interés y la estación de Bici Max más cercana.
+## Table of Contents
+- [Project Structure](#project-structure)
+- [Description](#description)
+- [Requirements](#requirements)
+- [Deployment](#deployment)
+- [Conclusion](#conclusion)
+- [Built With](#built-with)
+- [References](#references)
 
-## Pasos a Seguir
+## Project Structure 
+```
+│   .gitignore
+│   main.py
+│   README.md
+│
+├───.ipynb_checkpoints
+├───basura
+├───data
+│       22
+│       bicimad_stations.csv
+│       bicipark_stations.csv
+│       DF_COMBINADO
+│       DF_COMBINADO.csv
+│       prueba2
+│       prueba_1.csv
+│
+├───desarrollo
+│   │   dev_notebook_.ipynb
+│   │
+│   └───.ipynb_checkpoints
+│           dev_notebook_-checkpoint.ipynb
+│
+└───modulos
+    │   modulos.py
+    │
+    ├───.ipynb_checkpoints
+    └───__pycache__
+            modulos.cpython-310.pyc
+            modulos.cpython-312.pyc
+            modulos.cpython-39.pyc
+```
+## Description 📢 
+This project aims to clean and process data from different formats to calculate the minimum distance between a point of interest and the nearest Bici Max station in Madrid.
 
-### 1. Datos
-#### 1.1 Bici Max
-Los datos están contenidos en formato CSV en la carpeta `data`.
+## Requirements 📋 
+Necessary libraries and dependencies:
+- Python version == 3.10.14 
+- geopandas == 1.0.1 
+- requests == 2.32.3 
 
-#### 1.2 Lugar de Interés
-Los datos se obtienen a través de la API del [Portal de Datos Abiertos del Ayuntamiento de Madrid](https://datos.madrid.es/nuevoMadrid/swagger-ui-master-2.2.10/dist/index.html?url=/egobfiles/api.datos.madrid.es.json#/).
+## Deployment 📦 
+To run the `main.py` script, you must use the terminal and be located in the "proyecto de modulo uno" folder. Follow these steps:
 
-### 2. Desarrollo
-Se exploran los datos y se definen los métodos a utilizar para resolver la problemática planteada. Se presenta una estrategia y se planifican las diferentes maneras de proceder, optando por la más conveniente.
+1. **Execute the following code:**
+    _python main.py --function "ALL"_ ⌨️
+   This will result in a CSV file where you can specify the filename, containing a complete list of points of interest with the desired information.
+   
+    
+   
 
-#### 2.1 Funciones
-Se crean funciones basadas en los pasos a seguir y en la exploración previa de los datos.
+2. **Execute the following code:**   
+   _python main.py --function "LUGAR"_ ⌨️
+   This allows you to perform a search by user input and returns only the row with the required information.
 
-#### 2.2 Pruebas
-Las funciones se prueban individualmente y en conjunto para asegurar su correcto funcionamiento.
+## Conclusion 📄 
+If you follow the steps and use the necessary libraries and dependencies, you should not have any issues running it from the terminal.
 
-### 3. Módulos
-Una vez todo está funcionando, se crea el archivo `.py` llamado `modulos.py`, que contiene solo las funciones junto con sus librerías necesarias.
+## Built With 🛠️ 
+- Jupyter Notebook 
+- Python 
 
-### 4. Script Principal
-Se genera un archivo `main.py` donde se ejecuta la pipeline modificada para su uso específico.
+### Libraries  
+- pandas 
+- geopandas 
+- requests 
 
-### 5. Uso de Argparser
-Se utiliza esta librería para ofrecer opciones al usuario al ejecutar el script mediante la función `argument_parser()`.
-
-#### 5.1 Opción 1: "ALL"
-Devuelve un CSV con todos los sitios de interés y la estación Bici Max más cercana, guardándolo en la carpeta `data`. Permite ingresar el nombre del archivo deseado.
-
-#### 5.2 Opción 2: "LUGAR DE INTERÉS"
-A partir del lugar de interés ingresado por el usuario, devuelve solo la fila correspondiente a dicho lugar.
-
-## Conclusión
-Este proyecto genera un programa que, al ejecutarlo con un CSV y datos desde la API del [Portal de Datos Abiertos del Ayuntamiento de Madrid](https://datos.madrid.es/nuevoMadrid/swagger-ui-master-2.2.10/dist/index.html?url=/egobfiles/api.datos.madrid.es.json#/), modifica y ejecuta operaciones necesarias para obtener resultados esperados, volviéndolos a cargar en un nuevo archivo CSV según la opción elegida por el usuario.
-
+## References 👨‍💻 
+- [Pandas](https://pandas.pydata.org/) 
+- [Geopandas](https://geopandas.org/en/stable/gallery/create_geopandas_from_pandas.html) 
+- [Requests](https://requests.readthedocs.io/en/latest/) 

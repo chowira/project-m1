@@ -28,7 +28,7 @@ def distance_meters(lat_start, long_start, lat_finish, long_finish):
 # FUNCION PARA HACER UN DATAFRAME DE UN ARCHIVO CSV
 #Acepta : la uri de un csv como argumento 
 #Devuelve: Un DataFrame
-def carga_datos_csv (uri , separador="\t"): 
+def carga_datos_csv(uri , separador="\t"): 
     """
     Carga un archivo CSV en un DataFrame de Pandas.
     Retorna:
@@ -148,18 +148,18 @@ def calculo_de_distacias(df_1,df_2):
 #Devuelve: Un DataFrame que solo muestra la imformacion requerida (distancia ntre punto interes y la estacion de bici max mas cercana )
 
 
-def distancias_min(df_combinado):
+def distancias_min(df):
     """" Funcion que agrupa teniendo encuenta lugar de interes y distacia min ,
     renombra las columnas y se trae solo las filas con la info necesaria
     y elimina as columnas que no son necesarias """
     
     
     
-    resultado = df_combinado.groupby('lugar de interes').agg({'distancia': ['idxmin', 'min']}).reset_index()
+    resultado = df.groupby('lugar de interes').agg({'distancia': ['idxmin', 'min']}).reset_index()
     resultado.columns = ['lugar de interes', 'idxmin', 'distancia min']
     indices_minimos = resultado[('idxmin')].dropna().astype(int)
-    resultado_final = df_combinado.loc[indices_minimos]
-    resultado_final = pd.merge(resultado, resultado_final[['lugar de interes', 'address', 'street-address']], on='lugar de interes')
+    resultado_final = df.loc[indices_minimos]
+    resultado_final = pd.merge(resultado, resultado_final[['lugar de interes', 'address', 'street-address', 'bicis disponibles']],on='lugar de interes')
     resultado_final = resultado_final.rename(columns={'address': 'estacion bici max', 'street-address': 'direccion de lugar de interes'})
     resultado_final = resultado_final.drop(columns=['idxmin'])
     return  resultado_final
@@ -213,7 +213,19 @@ def obtener_fila_por_lugar(df, lugar_de_interes):
     return fila
 
 
+#BONUS:
+#FUNCION: calculo de bicis disponibles
+#PARAMETROS: DataFrame 
+# DEVUELVE: DataFrame (con la columna bicisdisponibles)
 
+def calculo_bicis_disponibles(df):
+    
+    """Funcion que hace el calculo de las bicis disponibles  """
+    if not isinstance(df, pd.DataFrame):
+        
+        raise ValueError("El argumento debe ser un DataFrame de pandas.")
+    df["bicis disponibles"]= df["total_bases"] - df["free_bases"]
+    return df
 
 
 
