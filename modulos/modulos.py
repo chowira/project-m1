@@ -137,7 +137,7 @@ def calculo_de_distacias(df_1,df_2):
     df_1["key"] = 1
     df_2["key"] = 1
     df_combinado = pd.merge(df_1,df_2)
-    df_combinado["distancia"] = df_combinado[0:1000].apply(lambda x: distance_meters(x["latitude"], x["longitude"],x["latitud_bicimad"], x["longitud_bicimad"] ), axis=1)
+    df_combinado["distancia"] = df_combinado.apply(lambda x: distance_meters(x["latitude"], x["longitude"],x["latitud_bicimad"], x["longitud_bicimad"] ), axis=1)
     return df_combinado      
 
 
