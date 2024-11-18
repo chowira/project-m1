@@ -41,3 +41,13 @@ if __name__ == '__main__':
         else:
             result = 'FATAL ERROR...you need to select the correct method'
             print(f'The result is => {result}') 
+
+           
+           
+           #algunas direciones para probar 
+
+            #Agencia de Proximidad de Arganzuela
+            #Agente Tutor. Policía Municipal. Comisaría Integral de Distrito Vicálvaro
+            #Aparcamiento para residentes. Antonio Mena
+            #Aravaca Innovation Lab
+            #Auditorio al aire libre. Parque Amós Acero
